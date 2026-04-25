@@ -45,16 +45,16 @@
 
         <!-- Password -->
         <div class="relative">
-            <label for="password" class="block text-md text-bold font-medium text-gray-200">Password</label>
+            <label for="password" class="block text-md font-medium text-gray-200">Password</label>
             <input type="password" name="password" id="InputPassword"
                 class="mt-2 p-3 w-full rounded-lg sm:text-sm 
-                bg-transparent text-white 
-                border border-white/30
-                focus:border-indigo-500 
-                focus:ring-2 focus:ring-indigo-400 
-                focus:shadow-lg focus:shadow-indigo-500/50 
-                transition duration-300 ease-in-out 
-                @error('password') border-red-500 @enderror"
+                  bg-transparent text-white 
+                  border border-white/30
+                  focus:border-indigo-500 
+                  focus:ring-2 focus:ring-indigo-400 
+                  focus:shadow-lg focus:shadow-indigo-500/50 
+                  transition duration-300 ease-in-out 
+                  @error('password') border-red-500 @enderror"
                 required>
             <i class="fa fa-eye-slash toggle-password absolute right-3 top-11 cursor-pointer text-gray-400 hover:text-gray-200"
                 data-target="InputPassword"></i>
@@ -65,16 +65,15 @@
 
         <!-- Confirm Password -->
         <div class="relative">
-            <label for="password_confirmation" class="block text-md text-bold font-medium text-gray-200">Confirm
-                Password</label>
+            <label for="password_confirmation" class="block text-md font-medium text-gray-200">Confirm Password</label>
             <input type="password" name="password_confirmation" id="InputPasswordConfirmation"
                 class="mt-2 p-3 w-full rounded-lg sm:text-sm 
-                bg-transparent text-white 
-                border border-white/30
-                focus:border-indigo-500 
-                focus:ring-2 focus:ring-indigo-400 
-                focus:shadow-lg focus:shadow-indigo-500/50 
-                transition duration-300 ease-in-out "
+                  bg-transparent text-white 
+                  border border-white/30
+                  focus:border-indigo-500 
+                  focus:ring-2 focus:ring-indigo-400 
+                  focus:shadow-lg focus:shadow-indigo-500/50 
+                  transition duration-300 ease-in-out"
                 required>
             <i class="fa fa-eye-slash toggle-password absolute right-3 top-11 cursor-pointer text-gray-400 hover:text-gray-200"
                 data-target="InputPasswordConfirmation"></i>
@@ -95,16 +94,22 @@
 @endsection
 
 @section('scripts')
-    <script>
-        document.querySelectorAll('.toggle-password').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const inputId = this.getAttribute('data-target');
-                const input = document.getElementById(inputId);
-                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-                input.setAttribute('type', type);
-                this.classList.toggle('fa-eye');
-                this.classList.toggle('fa-eye-slash');
-            });
+<script>
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+        toggle.addEventListener('click', function () {
+            const inputId = this.getAttribute('data-target');
+            const input = document.getElementById(inputId);
+
+            if (!input) return; // safety check
+
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+
+            // ubah icon sesuai kondisi
+            this.classList.remove('fa-eye', 'fa-eye-slash');
+            this.classList.add(isPassword ? 'fa-eye' : 'fa-eye-slash');
         });
-    </script>
+    });
+</script>
+
 @endsection

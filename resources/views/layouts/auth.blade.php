@@ -20,7 +20,7 @@
     <div class="relative flex w-full min-h-screen items-center justify-center xl:py-5">
         <div class="w-full max-w-md shadow-lg rounded-lg">
             <img src="{{ asset('assets/img/velplay-logo2.png') }}" alt="Velplay Logo" class="mt-2">
-            <h1 class="text-center text-5xl lg:text-6xl text-white font-bold mt-3 mb-5">@yield('title')</h1>
+            <h1 class="text-center text-4xl lg:text-5xl text-white font-medium mt-3 mb-5">@yield('title')</h1>
 
             {{-- Error Alert --}}
             @if ($errors->any())
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    @yield('script')
+    @yield('scripts')
 </body>
 
 
