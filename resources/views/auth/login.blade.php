@@ -70,4 +70,23 @@
     </form>
 @endsection
 
-@section('script')
+@section('scripts')
+<script>
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+        toggle.addEventListener('click', function () {
+            const inputId = this.getAttribute('data-target');
+            const input = document.getElementById(inputId);
+
+            if (!input) return; // safety check
+
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+
+            // ubah icon sesuai kondisi
+            this.classList.remove('fa-eye', 'fa-eye-slash');
+            this.classList.add(isPassword ? 'fa-eye' : 'fa-eye-slash');
+        });
+    });
+</script>
+
+@endsection
