@@ -26,7 +26,7 @@ class FortifyServiceProvider extends ServiceProvider
         {
             public function toResponse($request)
             {
-                redirect()->route('/subscribe/plans');
+                return redirect()->route('subscribe.plans');
             }
         });
     }
