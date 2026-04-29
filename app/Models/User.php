@@ -45,8 +45,16 @@ class User extends Authenticatable
         ];
     }
 
-    public function membership()
+    public function memberships()
     {
         return $this->hasMany(Membership::class);
+    }
+
+    public function hasMemberships()
+    {
+        return $this->memberships()
+            ->where('status', 'active')
+            ->where('end_date', '>', now())
+            ->exists();
     }
 }
