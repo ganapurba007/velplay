@@ -34,20 +34,20 @@
             
             <!-- Footer -->
             <div class="mt-6 px-6 pb-6">
-                <a href="#" 
-                   class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 
-                          text-white py-3 px-4 rounded-lg shadow-lg 
-                          hover:from-indigo-700 hover:to-purple-700 
-                          focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                   Choose Plan
-                </a>
-                {{-- <a href="{{ route('subscribe.checkout', $plan->id) }}" 
+                {{-- <a href="#" 
                    class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 
                           text-white py-3 px-4 rounded-lg shadow-lg 
                           hover:from-indigo-700 hover:to-purple-700 
                           focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
                    Choose Plan
                 </a> --}}
+                <a href="{{ route('subscribe.checkout', $plan->id) }}" 
+                   class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 
+                          text-white py-3 px-4 rounded-lg shadow-lg 
+                          hover:from-indigo-700 hover:to-purple-700 
+                          focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                   Choose Plan
+                </a>
             </div>
         </div>
     @endforeach
