@@ -8,13 +8,8 @@ use Illuminate\Support\Str;
 use Jenssegers\Agent\Facades\Agent;
 
 
-
-
 class DeviceLimitService
 {
-    /**
-     * Create a new class instance.
-     */
     public function registerDevice(User $user)
     {
         $deviceInfo = $this->getDeviceInfo();
@@ -22,7 +17,7 @@ class DeviceLimitService
 
         if ($exsitingDevice) {
             $exsitingDevice->update(['last_active' => now()]);
-            session(['device_id' => $exsitingDevice->id]);
+            session(['device_id' => $exsitingDevice->device_id]);
             return $exsitingDevice;
         }
 
@@ -31,7 +26,7 @@ class DeviceLimitService
         }
 
         $device = $this->createNewDevice($user, $deviceInfo);
-        session(['device_id' => $device->id]);
+        session(['device_id' => $device->device_id]);
         return $device;
     }
 
@@ -56,14 +51,14 @@ class DeviceLimitService
     {
         return UserDevice::where('user_id', $user->id)
             ->where('device_name', $deviceInfo['device_name'])
-            ->wheere('platform', $deviceInfo['platform'])
+            ->where('platform', $deviceInfo['platform'])
             ->where('browser', $deviceInfo['browser'])
             ->first();
     }
 
     private function hasReachedDeviceLimit(User $user)
     {
-        $maxDevices = $user->getCurrenPlan()->max_devices ?? 1;
+        $maxDevices = $user->getCurrentPlan()->max_devices ?? 2;
         return UserDevice::where('user_id', $user->id)->count() >= $maxDevices;
     }
 

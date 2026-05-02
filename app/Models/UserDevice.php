@@ -26,18 +26,4 @@ class UserDevice extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function getCurrentPlan()
-    {
-        $activeMembership = $this->user->memberships()
-            ->where('active', true)
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now())
-            ->latest()
-            ->first();
-
-        if (!$activeMembership) {
-            return null;
-        }
-    }
 }
