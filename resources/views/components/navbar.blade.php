@@ -16,7 +16,7 @@
                         <i class="fa-solid fa-chevron-down ml-2"></i>
                     </button>
                     <div id="kategori-menu-desktop"
-                        class="absolute left-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg hidden">
+                        class="absolute left-0 mt-2 w-auto min-w-max bg-gray-800 border border-indigo-300 rounded-md shadow-lg hidden">
                         <x-category-nav />
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <i class="fa-solid fa-chevron-down ml-2"></i>
             </button>
             <div id="kategori-menu-mobile" class="hidden mt-2 space-y-1 bg-gray-800 rounded-md shadow-lg">
-<x-category-nav />
+                <x-category-nav />
             </div>
         </div>
 
@@ -116,4 +116,15 @@
             target.classList.toggle('hidden');
         });
     });
+
+    window.addEventListener('click', (e) => {
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        const target = document.getElementById(btn.dataset.target);
+        // jika menu sedang terbuka dan klik bukan di tombol atau menu
+        if (!target.classList.contains('hidden') && !btn.contains(e.target) && !target.contains(e.target)) {
+            target.classList.add('hidden');
+        }
+    });
+});
+
 </script>
