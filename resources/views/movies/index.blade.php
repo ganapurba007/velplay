@@ -24,55 +24,69 @@
         </div>
     </div>
 
-    @php
-        $movies = ['Trex.webp', 'Foundation.webp', 'Godzilla Kingkong.webp', 'Lowlifes.webp', 'Boy.webp', 'Fights.webp'];
-        $totalPages = ceil(count($movies) / 4);
-    @endphp
+    <!-- NEW ADDED -->
+    <h3 class="text-2xl font-bold text-white mt-14 mb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        New Added
+    </h3>
 
-@php
-    $movies = ['Trex.webp', 'Foundation.webp', 'Godzilla Kingkong.webp', 'Lowlifes.webp', 'Boy.webp', 'Fights.webp'];
-    $totalPages = ceil(count($movies) / 4);
-@endphp
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-@foreach (['New Added', 'Trending'] as $section)
-    <h3 class="text-2xl font-bold text-white mt-14 mb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{{ $section }}</h3>
-    <section 
-        x-data="{ 
-            page: 0, 
-            itemsPerPage: window.innerWidth < 640 ? 1 : (window.innerWidth < 768 ? 2 : (window.innerWidth < 1024 ? 3 : 4)) 
-        }" 
-        x-init="window.addEventListener('resize', () => {
-            itemsPerPage = window.innerWidth < 640 ? 1 : (window.innerWidth < 768 ? 2 : (window.innerWidth < 1024 ? 3 : 4));
-            page = 0; // reset ke awal saat resize
-        })"
-        class="relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-    >
-        <div class="flex transition-transform duration-700 ease-out"
-             :style="`transform: translateX(-${page * 100}%)`">
-            @foreach ($movies as $img)
-                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 px-3">
-                    <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
-                        <img src="{{ asset('assets/img/' . $img) }}" alt="{{ $img }}"
-                            class="w-full h-auto object-contain object-center max-h-72 sm:max-h-80 lg:max-h-96">
-                        <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
-                            <img src="{{ asset('assets/img/star-rating.webp') }}" alt="Star Rating" class="h-4 w-4 mr-1">
-                            (8,3)
-                        </span>
-                    </div>
-                </div>
+            @foreach ($latestMovies as $latest)
+            {{-- {{ dd($latest) }} --}}
+            <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
+                <img
+                    src="{{ $latest->poster ?? asset('assets/img/default.webp') }}"
+                    alt="{{ $latest->title ?? 'Movie' }}"
+                    class="w-full h-80 object-cover">
+
+                <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
+                    <img src="{{ asset('assets/img/star-rating.webp') }}"
+                        class="h-4 w-4 mr-1">
+                    {{ $latest->average_rating ?? '0' }}
+                </span>
+
+                {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                    <h4 class="text-white font-bold">
+                        {{ $latestMovies[0]->title ?? 'Movie Title' }}
+                    </h4>
+                </div> --}}
+            </div>
             @endforeach
+
         </div>
-
-        <!-- Tombol Navigasi -->
-        <button @click="if(page > 0) page -= 1"
-            class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black transition">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button @click="if((page+1) * itemsPerPage < {{ count($movies) }}) page += 1"
-            class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black transition">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
     </section>
-@endforeach
 
+    <!-- TRENDING -->
+    <h3 class="text-2xl font-bold text-white mt-14 mb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        Trending
+    </h3>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            @foreach ($popularMovies as $popular)
+            {{-- {{ dd($popular) }} --}}
+            <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
+                <img
+                    src="{{ $popular->poster ?? asset('assets/img/default.webp') }}"
+                    alt="{{ $popular->title ?? 'Movie' }}"
+                    class="w-full h-80 object-cover">
+
+                <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
+                    <img src="{{ asset('assets/img/star-rating.webp') }}"
+                        class="h-4 w-4 mr-1">
+                    {{ $popular->average_rating ?? '0' }}
+                </span>
+
+                {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                    <h4 class="text-white font-bold">
+                        {{ $popularMovies[0]->title ?? 'Movie Title' }}
+                    </h4>
+                </div> --}}
+            </div>
+            @endforeach
+
+        </div>
+    </section>
 @endsection
