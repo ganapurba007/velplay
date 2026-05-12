@@ -2,7 +2,7 @@
     @foreach ($categories as $chunk)
         <div class="space-y-2">
             @foreach ($chunk as $category)
-                <a href="#"
+                <a href="{{ route('categories.show' , $category->slug) }}"
                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">
                     {{ $category->title }}
                 </a>

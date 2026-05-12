@@ -61,9 +61,9 @@
                 <!-- Categories -->
                 <div class="flex flex-wrap gap-3 mt-6">
                     @foreach ($movie->categories as $category)
-                        <span class="px-4 py-2 rounded-full bg-red-500/20 text-red-300 border border-red-500/20 text-sm">
+                        <a href="{{ route('categories.show', $category->slug) }}" class="px-4 py-2 rounded-full bg-red-500/20 text-red-300 border border-red-500/20 text-sm">
                             {{ $category->title }}
-                        </span>
+                        </a>
                     @endforeach
                 </div>
 

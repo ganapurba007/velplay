@@ -1,4 +1,4 @@
-<nav class="bg-gray-900 border-b border-gray-700">
+<nav class="bg-gray-900 border-b border-gray-700 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
 
@@ -16,7 +16,7 @@
                         <i class="fa-solid fa-chevron-down ml-2"></i>
                     </button>
                     <div id="kategori-menu-desktop"
-                        class="absolute left-0 mt-2 w-auto min-w-max bg-gray-800 border border-indigo-300 rounded-md shadow-lg hidden">
+                        class="absolute left-0 mt-2 w-auto min-w-max bg-gray-800 border border-indigo-300 rounded-md shadow-lg hidden z-[999]">
                         <x-category-nav />
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                 <span>Kategori</span>
                 <i class="fa-solid fa-chevron-down ml-2"></i>
             </button>
-            <div id="kategori-menu-mobile" class="hidden mt-2 space-y-1 bg-gray-800 rounded-md shadow-lg">
+            <div id="kategori-menu-mobile" class="hidden mt-2 space-y-1 bg-gray-800 rounded-md shadow-lg z-[999]">
                 <x-category-nav />
             </div>
         </div>
