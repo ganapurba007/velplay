@@ -8,15 +8,11 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-
 class MovieController extends Controller implements HasMiddleware
 {
     public static function middleware(): array
     {
-        return [
-            'auth',
-            'check.device.limit'
-        ];
+        return ['auth', 'check.device.limit'];
     }
     public function index()
     {
@@ -24,8 +20,21 @@ class MovieController extends Controller implements HasMiddleware
         $popularMovies = Movie::with('ratings')->get()->sortByDesc('average_rating')->take(8);
         return view('movies.index', [
             'latestMovies' => $latestMovies,
-            'popularMovies' => $popularMovies
+            'popularMovies' => $popularMovies,
         ]);
+    }
+
+    public function all(Request $request)
+    {
+        $movies = Movie::orderBy('release_date', 'desc')->paginate(8);
+        if ($request->ajax()) {
+            $html = view('components.movie-list', compact('movies'))->render();
+            return response()->json([
+                'html' => $html,
+                'next_page' => $movies->nextPageUrl()
+            ]);
+        }
+        return view('movies.all', compact('movies'));
     }
 
     public function show(Movie $movie)
@@ -34,7 +43,7 @@ class MovieController extends Controller implements HasMiddleware
         $streamingUrl = $movie->getStreamingUrl($userPlan->resolution);
         return view('movies.show', [
             'movie' => $movie,
-            'streamingUrl' => $streamingUrl
+            'streamingUrl' => $streamingUrl,
         ]);
     }
 
@@ -44,7 +53,7 @@ class MovieController extends Controller implements HasMiddleware
         $movies = Movie::where('title', 'like', "%{$search}%")->get();
         return view('movies.search', [
             'keyword' => $search,
-            'movies' => $movies
+            'movies' => $movies,
         ]);
     }
 }
