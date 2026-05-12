@@ -33,25 +33,23 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
             @foreach ($latestMovies as $latest)
-            {{-- {{ dd($latest) }} --}}
-            <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
-                <img
-                    src="{{ $latest->poster ?? asset('assets/img/default.webp') }}"
-                    alt="{{ $latest->title ?? 'Movie' }}"
-                    class="w-full h-80 object-cover">
+                {{-- {{ dd($latest) }} --}}
+                <div
+                    class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
+                    <img src="{{ $latest->poster ?? asset('assets/img/default.webp') }}"
+                        alt="{{ $latest->title ?? 'Movie' }}" class="w-full h-80 object-cover">
 
-                <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
-                    <img src="{{ asset('assets/img/star-rating.webp') }}"
-                        class="h-4 w-4 mr-1">
-                    {{ $latest->average_rating ?? '0' }}
-                </span>
+                    <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
+                        <img src="{{ asset('assets/img/star-rating.webp') }}" class="h-4 w-4 mr-1">
+                        {{ $latest->average_rating ?? '0' }}
+                    </span>
 
-                {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                    {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                     <h4 class="text-white font-bold">
                         {{ $latestMovies[0]->title ?? 'Movie Title' }}
                     </h4>
                 </div> --}}
-            </div>
+                </div>
             @endforeach
 
         </div>
@@ -66,25 +64,26 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
             @foreach ($popularMovies as $popular)
-            {{-- {{ dd($popular) }} --}}
-            <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
-                <img
-                    src="{{ $popular->poster ?? asset('assets/img/default.webp') }}"
-                    alt="{{ $popular->title ?? 'Movie' }}"
-                    class="w-full h-80 object-cover">
+                {{-- {{ dd($popular) }} --}}
+                <a href="{{ route('movies.show', $popular->slug) }}">
+                    <div
+                        class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition transform">
+                        <img src="{{ $popular->poster ?? asset('assets/img/default.webp') }}"
+                            alt="{{ $popular->title ?? 'Movie' }}" class="w-full h-80 object-cover">
 
-                <span class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
-                    <img src="{{ asset('assets/img/star-rating.webp') }}"
-                        class="h-4 w-4 mr-1">
-                    {{ $popular->average_rating ?? '0' }}
-                </span>
+                        <span
+                            class="absolute top-2 right-5 text-white text-sm px-2 py-1 rounded flex items-center bg-black/60">
+                            <img src="{{ asset('assets/img/star-rating.webp') }}" class="h-4 w-4 mr-1">
+                            {{ $popular->average_rating ?? '0' }}
+                        </span>
 
-                {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        {{-- <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                     <h4 class="text-white font-bold">
                         {{ $popularMovies[0]->title ?? 'Movie Title' }}
                     </h4>
                 </div> --}}
-            </div>
+                    </div>
+                </a>
             @endforeach
 
         </div>
