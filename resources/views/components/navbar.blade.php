@@ -4,7 +4,7 @@
 
             <!-- Left: Logo + Dropdown -->
             <div class="flex items-center space-x-6">
-                <a href="#">
+                <a href="{{ route('home') }}">
                     <img src="{{ asset('assets/img/logo-nav.png') }}" alt="Logo" class="h-10 w-auto">
                 </a>
 
@@ -24,8 +24,8 @@
 
             <!-- Center: Search -->
             <div class="flex-1 flex justify-center px-4">
-                <form class="flex items-center bg-gray-800 rounded-md px-2 w-full max-w-md">
-                    <input type="text" placeholder="Cari Disini"
+                <form class="flex items-center bg-gray-800 rounded-md px-2 w-full max-w-md" method="GET" action="{{ route('movies.search') }}">
+                    <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari Disini"
                         class="bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 py-1 w-full">
                     <button type="submit" class="text-gray-400 hover:text-white">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -75,8 +75,8 @@
         </div>
 
         <!-- Search -->
-        <form class="flex items-center bg-gray-800 rounded-md px-2">
-            <input type="text" placeholder="Cari Disini"
+        <form class="flex items-center bg-gray-800 rounded-md px-2" method="GET" action="{{ route('movies.search') }}">
+            <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari Disini"
                 class="bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 py-1 w-full">
             <button type="submit" class="text-gray-400 hover:text-white">
                 <i class="fa-solid fa-magnifying-glass"></i>
