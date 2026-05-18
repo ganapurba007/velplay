@@ -36,8 +36,7 @@
                 <p
                     class="max-w-2xl mt-4 text-sm leading-relaxed md:text-base text-slate-400">
 
-                    Temukan berbagai film terbaik favorit kamu dengan tampilan modern,
-                    rating menarik, dan pengalaman streaming yang lebih nyaman.
+       Discover a variety of your favorite top-rated movies with a modern interface, attractive ratings, and a more comfortable streaming experience.
 
                 </p>
             </div>
@@ -98,7 +97,7 @@
             </i>
 
             <span class="relative z-10">
-                Lebih Banyak
+                Load More
             </span>
 
         </button>

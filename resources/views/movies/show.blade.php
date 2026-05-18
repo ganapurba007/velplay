@@ -15,7 +15,7 @@
         <nav class="mb-8">
             <ol class="flex items-center gap-2 text-sm text-gray-400">
                 <li>
-                    <a href="#" class="hover:text-white transition">
+                    <a href="{{ route('home') }}" class="hover:text-white transition">
                         Home
                     </a>
                 </li>
@@ -163,7 +163,7 @@
 
                         <i class="fa-regular fa-lightbulb text-yellow-400"></i>
 
-                        <span>Matikan Lampu</span>
+                        <span>Turn Off Light</span>
                     </button>
 
                     <!-- Trailer -->
@@ -183,7 +183,7 @@
 
                     <i class="fa-solid fa-star"></i>
 
-                    <span>Berikan Rating</span>
+                    <span>Give Rating</span>
                 </button>
 
             </div>

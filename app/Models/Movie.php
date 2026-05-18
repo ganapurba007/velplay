@@ -39,7 +39,7 @@ class Movie extends Model
 
     public function getAverageRatingAttribute(): float
     {
-        return $this->ratings()->avg('rating');
+        return round($this->ratings()->avg('rating') ?? 0,1);
     }
 
     public function getStreamingUrl(string $planResolution): string {

@@ -12,7 +12,7 @@
                 <div class="relative hidden md:block">
                     <button class="flex items-center text-gray-300 hover:text-white focus:outline-none toggle-btn"
                         data-target="kategori-menu-desktop">
-                        <span>Kategori</span>
+                        <span>Categories</span>
                         <i class="fa-solid fa-chevron-down ml-2"></i>
                     </button>
                     <div id="kategori-menu-desktop"
@@ -25,7 +25,7 @@
             <!-- Center: Search -->
             <div class="flex-1 flex justify-center px-4">
                 <form class="flex items-center bg-gray-800 rounded-md px-2 w-full max-w-md" method="GET" action="{{ route('movies.search') }}">
-                    <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari Disini"
+                    <input type="text" name="q" value="{{ request('q') }}" placeholder="Search here..."
                         class="bg-transparent text-white placeholder-gray-400 focus:outline-none px-2 py-1 w-full">
                     <button type="submit" class="text-gray-400 hover:text-white">
                         <i class="fa-solid fa-magnifying-glass"></i>
