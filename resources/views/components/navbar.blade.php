@@ -46,7 +46,14 @@
                     <div id="user-menu" class="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg hidden">
                         <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Profile
                             Settings</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Logout</a>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+
+        <button type="submit"
+            class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
+            Logout
+        </button>
+    </form>
                     </div>
                 </div>
             </div>
@@ -96,7 +103,14 @@
                 <div id="user-menu-mobile" class="absolute left-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg hidden">
                     <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Profile
                         Settings</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Logout</a>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+
+        <button type="submit"
+            class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
+            Logout
+        </button>
+    </form>
                 </div>
             </div>
         </div>

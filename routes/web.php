@@ -3,7 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\TransactionController;
 use App\Models\Membership;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,7 @@ Route::get('/subscribe/plans/{plan}', [SubscribeController::class, 'checkoutPlan
 Route::post('/subscribe/checkout', [SubscribeController::class, 'processCheckout'])->name('subscribe.process');
 Route::get('/subscribe/success', [SubscribeController::class, 'showSuccess'])->name('subscribe.success');
 
+Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 
 Route::get('/text-expired', function () {
     $membership = Membership::find(1);
